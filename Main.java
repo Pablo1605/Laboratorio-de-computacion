@@ -1,300 +1,368 @@
+import java.util.Collection;
 import java.util.Scanner;
-import java.util.Random;
+import java.util.Arrays;
+import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        //Ejercicio 1
-        int [] numeros = new int[10];
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.print("Ingrese el número " + (i + 1) + ":");
-            numeros[i] = sc.nextInt();
+        //1
+        Integer [] enteros = {2,1,5,3,4,9,8,6,10,7};
+        Arrays.sort(enteros);
+        for (int n : enteros) {
+            System.out.println(n);
         }
-        int sumaPositivos = 0;
-        int sumaNegativos = 0;
-        int contadorPositivos = 0;
-        int contadorNegativos = 0;
-        for (int i = 0; i < numeros.length; i++) {
-            if (numeros[i] > 0) {
-                sumaPositivos = sumaPositivos + numeros[i];
-                contadorPositivos++;
+
+        //2
+        Arrays.sort(enteros, Collections.reverseOrder());
+        for (int n : enteros) {
+            System.out.println(n);
+        }
+
+        //3
+        Double [] flotantes = {3.13,1.89,2.71,5.55,9.23,7.62,6.26,4.38,8.97,0.99};
+        Arrays.sort(flotantes);
+        for (double n : flotantes) {
+            System.out.println(n);
+        }
+
+        //4
+        Arrays.sort(flotantes,Collections.reverseOrder());
+        for (double n : flotantes) {
+            System.out.println(n);
+        }
+
+        //5
+        String [] cadenas = {"Dado","Java","Amarillo","Hola","Buho","Gato","Foca","Isla","Esmeralda","Carta"};
+        Arrays.sort(cadenas);
+        for (String c : cadenas) {
+            System.out.println(c);
+        }
+
+        //6
+        Arrays.sort(cadenas, Collections.reverseOrder());
+        for (String c : cadenas) {
+            System.out.println(c);
+        }
+
+        //7
+        System.out.println();
+        Persona[] personas = {
+                new Persona("Carlos", 30),
+                new Persona("Ana", 25),
+                new Persona("Pedro", 35)
+        };
+
+        Arrays.sort(personas);
+
+        for (Persona persona : personas) {
+            System.out.println(persona.getNombre() + " - " + persona.getEdad());
+        }
+
+        for (Persona persona : personas) {
+            System.out.println(persona);
+        }
+
+        //8
+        System.out.println();
+        Producto[] productos = {
+                new Producto("Producto A", 50.0),
+                new Producto("Producto B", 30.0),
+                new Producto("Producto C", 70.0)
+        };
+
+        Arrays.sort(productos);
+
+        for (Producto producto : productos) {
+            System.out.println(producto.getNombre() + " - " + producto.getPrecio());
+        }
+
+        //9
+        int n = enteros.length;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (enteros[j] > enteros[j+1]) {
+                    int temp = enteros[j];
+                    enteros[j] = enteros[j+1];
+                    enteros[j+1] = temp;
+                }
             }
         }
-        for (int i = 0; i < numeros.length; i++) {
-            if (numeros[i] < 0) {
-                sumaNegativos = sumaNegativos + numeros[i];
-                contadorNegativos++;
-            }
-        }
-        if (contadorPositivos > 0) {
-            double mediaPositivos = sumaPositivos / contadorPositivos;
-            System.out.println("Media de los valores positivos: " + mediaPositivos);
-        } else {
-            System.out.print("No se introdujero valores positivos");
-        }
-        if (contadorNegativos > 0) {
-            double mediaNegativos = sumaNegativos / contadorNegativos;
-            System.out.println("Media de los valores Negativos: " + mediaNegativos);
-        } else {
-            System.out.print("No se introdujero valores Negativos");
-//        }
-
-        //Ejercicio 2
-        int [] numeros = new int[10];
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.print("Ingrese el número " + (i + 1) + ":");
-            numeros[i] = sc.nextInt();
-        }
-        int suma = 0;
-        for (int i = 0; i < numeros.length; i+=2) {
-            suma += numeros[i];
-        }
-        double media = suma / numeros.length;
-        System.out.println("La media de los números que estan en posiciones pares es: " + media);
-
-        //Ejercicio 3
-        System.out.print("Ingrese el número de alumnos: ");
-        int numAlumnos = sc.nextInt();
-        double [] notas = new double[numAlumnos];
-        double suma = 0;
-        for (int i = 0; i < notas.length; i++) {
-            System.out.print("Ingrese la nota del alumno " + (i+1) + ":");
-            notas[i] = sc.nextDouble();
-            suma += notas[i];
-        }
-        double media = suma / notas.length;
-        System.out.println("La nota media de los alumnos es: " + media);
-        System.out.print("Alumnos con una nota superior a la media \n");
-        for (int i = 0; i < notas.length; i++) {
-            if (notas[i] > media) {
-                System.out.println("Alumno " + (i+1) + ": " + notas[i]);
-            }
-        }
-
-        //Ejercicio 4
-        int [] pares = new int[20];
-        for (int i = 0; i < pares.length; i++) {
-            pares[i] = (i + 1) * 2;
-        }
-        for (int i = 0; i < pares.length; i++) {
-            System.out.println(pares[i] + " ");
-//        }
-
-        //Ejercicio 5
-        int [] numeros = new int[10];
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.print("Ingrese el número " + (i+1) +": ");
-            numeros[i] = sc.nextInt();
-        }
-        int positivos = 0;
-        int negativos = 0;
-        int ceros = 0;
-        for (int i = 0; i < numeros.length; i++) {
-            if (numeros[i] > 0) {
-                positivos += 1;
-            } else if (numeros[i] < 0) {
-                negativos += 1;
-            } else if (numeros[i] == 0) {
-                ceros += 1;
-            }
-        }
-        System.out.println("La cantidad de números positivos es de " + positivos);
-        System.out.println("La cantidad de números negativos es de " + negativos);
-        System.out.println("La cantidad de números iguales a cero es de " + ceros);
-
-        //Ejercicio 6
-        int [] numeros = new int[10];
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.print("Ingrese el número " + (i + 1) + ":");
-            numeros[i] = sc.nextInt();
-        }
-        int sumaPositivos = 0;
-        int sumaNegativos = 0;
-        for (int i = 0; i < numeros.length; i++) {
-            if (numeros[i] > 0) {
-                sumaPositivos = sumaPositivos + numeros[i];
-            }
-        }
-        for (int i = 0; i < numeros.length; i++) {
-            if (numeros[i] < 0) {
-                sumaNegativos = sumaNegativos + numeros[i];
-            }
-        }
-        double mediaPositivos = sumaPositivos / numeros.length;
-        double mediaNegativos = sumaNegativos / numeros.length;
-        System.out.println("Media de los valores positivos: " + mediaPositivos + "\nMedia de los valores negativos: " + mediaNegativos);
-
-        //Ejercicio 7
-        int n;
-        do {
-            System.out.print("Ingrese el número de personas del que desee calcular su altura: ");
-            n = sc.nextInt();
-        }
-        while (n <= 0);
-        double [] alturas = new double[n];
-        double sumaAlturas = 0;
-        for (int i = 0; i < n; i++) {
-            System.out.print("Ingrese la altura de la persona " + (i+1) + ": ");
-            alturas[i] = sc.nextDouble();
-            sumaAlturas += alturas[i];
-        }
-        double alturaMedia = sumaAlturas / n;
-        int superiorMedia = 0;
-        int inferiorMedia = 0;
-        for (int i = 0; i < n; i++) {
-            if (alturas[i] > alturaMedia) {
-                superiorMedia++;
-            } else if (alturas[i] < alturaMedia) {
-                inferiorMedia++;
-            }
-        }
-        System.out.println("La altura media es: " + alturaMedia);
-        System.out.println("Las personas con una altura superior a la media son " + superiorMedia);
-        System.out.println("Las personas con una altura inferior a la media son " + inferiorMedia);
-
-        //Ejercicio 8
-        String [] nombres = new String[20];
-        double [] sueldos = new double[20];
-        for (int i = 0; i < nombres.length; i++) {
-            System.out.print("Ingrese el nombre del empleado " + (i+1) + ": ");
-            nombres[i] = sc.nextLine();
-            System.out.print("Ingrese el sueldo del empleado " + (i+1) + ": ");
-            sueldos[i] = sc.nextDouble();
-            sc.nextLine();
-
-        }
-        double mayorSueldo = sueldos[0];
-        String mayorSueldoNombre = nombres[0];
-        for (int i = 0; i < sueldos.length; i++) {
-            if (sueldos[i] > mayorSueldo) {
-                mayorSueldo = sueldos[i];
-                mayorSueldoNombre = nombres[i];
-            }
-        }
-        System.out.println("El empleado con mayor sueldo es " + mayorSueldoNombre + " con un sueldo de " + mayorSueldo);
-
-        //Ejercicio 9
-        int desde = 5;
-        int hasta = 20;
-        int tamano = 10;
-        int[] numAleatorios = array(desde,hasta,tamano);
-        for (int num : numAleatorios) {
+        for (int num : enteros) {
             System.out.print(num + " ");
-
-        //Ejercicio 10
-        //A
-        System.out.print("Ingrese el número de filas que desee que tengan los arrays A y B: ");
-        int filas = sc.nextInt();
-        System.out.print("Ingrese el números de columnas que desee que tengan los arrays A y B: ");
-        int columnas = sc.nextInt();
-        int [][] a = new int[filas][columnas];
-        int [][] b = new int[filas][columnas];
-        int [][] c = new int[filas][columnas];
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                System.out.print("Ingrese el valor para la pisición ["+i+", "+j+"] de la matriz A: ");
-                a[i][j] = sc.nextInt();
-            }
-        }
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                System.out.print("Ingrese el valor para la pisición ["+i+", "+j+"] de la matriz B: ");
-                b[i][j] = sc.nextInt();
-            }
-        }
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                c[i][j] = a[i][j] + b[i][j];
-            }
-        }
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                System.out.print(c[i][j] + " ");
-            }
-            System.out.println();
         }
 
-        //B
-        int filas = leerNumeroEntero("Introduce el número de filas: ");
-        int columnas = leerNumeroEntero("Introduce el número de columnas: ");
-        int [][] a = crearMatriz(filas,columnas);
-        int [][] b = crearMatriz(filas,columnas);
-        System.out.print("Introduce los valores de la matriz A: \n");
-        llenarMatriz(sc,a);
-        System.out.print("Introduce los valores de la matriz B: \n");
-        llenarMatriz(sc,b);
-        int [][] c = sumarMatrices(a,b);
-        System.out.print("La matriz C queda de la siguiente forma: \n");
-        mostrarMatriz(c);
+        //10
+        System.out.println();
+        for (int i = 0; i < n-1; i++) {
+            int minIndex = i;
+            for (int j = i+1; j < n; j++) {
+                if (enteros[j] < enteros[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int aux = enteros[i];
+            enteros[i] = enteros[minIndex];
+            enteros[minIndex] = aux;
+        }
+        for (int num : enteros) {
+            System.out.print(num + " ");
+        }
 
-        //Ejercicio 11
-        System.out.print("Introduce el número de filas: ");
-        int filas = sc.nextInt();
-        System.out.print("Introduce el número de columnas: ");
-        int columnas = sc.nextInt();
-        int [][] a = new int[filas][columnas];
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                System.out.print("Introduce el valor de la matriz A para la posición ["+i+", "+j+"]: ");
-                a[i][j] = sc.nextInt();
+        //11
+        System.out.println();
+        for (int i = 1; i < n; i++) {
+            int aux = enteros[i];
+            int j = i - 1;
+            while (j>=0 && enteros[j] > aux) {
+                enteros[j + 1] = enteros[j];
+                j = j - 1;
+            }
+            enteros[j+1] = aux;
+        }
+        for (int num : enteros) {
+            System.out.print(num + " ");
+        }
+
+        //12
+        System.out.println();
+        int [] enteros1 = {2,1,5,3,4,9,8,6,10,7};
+        ordenamiento_por_mezcla(enteros1);
+        for (int num : enteros) {
+            System.out.print(num + " ");
+        }
+
+        //13
+        System.out.println();
+        boolean cambios;
+        int i,aux;
+        for (int salto = n/2; salto != 0 ; salto /= 2) {
+            cambios = true;
+            while (cambios) {
+                cambios = false;
+                for (i = salto; i < n;i++) {
+                    if (enteros[i - salto] > enteros[i]) {
+                        aux = enteros[i];
+                        enteros[i] = enteros[i-salto];
+                        enteros[i-salto] = aux;
+                        cambios = true;
+                    }
+                }
             }
         }
-        int [][] matrizTranspuesta = new int[columnas][filas];
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                matrizTranspuesta[j][i] = a[i][j];
+        for (int num : enteros) {
+            System.out.print(num + " ");
+        }
+        //14
+        System.out.println();
+        int [] array1 = new int[20];
+        for (i = 0; i < 20; i++) {
+            System.out.print("Ingrese el valor "+i+" del array: ");
+            array1[i] = sc.nextInt();
+        }
+        System.out.print("Array original: ");
+        mostrarArray(array1);
+        System.out.println("¿Como deseas ordenar el array?[ASCENDENTE/DESCENDENTE]: ");
+        String tipoOrden = sc.next().toUpperCase();
+        System.out.println("¿Que metodo de ordenamiento desea?[INSERCION/BURBUJA/SELECCION]: ");
+        String metodoOrdenamiento = sc.next().toUpperCase();
+        tipoOrden = tipoOrden.toUpperCase();
+        metodoOrdenamiento = metodoOrdenamiento.toUpperCase();
+        if (metodoOrdenamiento.equals("INSERCION")) {
+            if (tipoOrden.equals("ASCENDENTE")) {
+                insercionAscendente(array1);
+            } else {
+                insercionDescendente(array1);
+            }
+        } else if (metodoOrdenamiento.equals("BURBUJA")) {
+            if (tipoOrden.equals("ASCENDENTE")) {
+                burbujaAscendente(array1);
+            } else {
+                burbujaDescendente(array1);
+            }
+        } else if (metodoOrdenamiento.equals("SELECCION")) {
+            if (tipoOrden.equals("ASCENDENTE")) {
+                seleccionAscendente(array1);
+            } else {
+                seleccionDescendente(array1);
+            }
+        } else {
+            System.out.println("Opción de método de ordenamiento no válida.");
+            return;
+        }
+        System.out.println("Array ordenado:");
+        mostrarArray(array1);
+    }
+    //12
+    public static void ordenamiento_por_mezcla(int[] enteros) {
+        if (enteros.length <= 1) {
+            return;
+        }
+        int medio = enteros.length / 2;
+        int[] izquierda = new int[medio];
+        int[] derecha = new int[enteros.length - medio];
+        System.arraycopy(enteros,0,izquierda,0,medio);
+        System.arraycopy(enteros,medio,derecha,0,enteros.length-medio);
+        ordenamiento_por_mezcla(izquierda);
+        ordenamiento_por_mezcla(derecha);
+        merge(enteros,izquierda,derecha);
+    }
+    public static void merge(int[] enteros,int[] izquierda,int[] derecha){
+        int i = 0,j = 0,k = 0;
+        while (i < izquierda.length && j < derecha.length) {
+            if (derecha[i] <= derecha[j]) {
+                enteros[k++] = izquierda[i++];
+            } else {
+                enteros[k++] = derecha[j++];
             }
         }
-        for (int j = 0; j < a[0].length; j++) {
-            for (int i = 0; i < a.length; i++) {
-                System.out.print(matrizTranspuesta[j][i] + " ");
-            }
-            System.out.println();
+        while (i < izquierda.length) {
+            enteros[k++] = izquierda[i++];
+        }
+        while (j < derecha.length) {
+            enteros[k++] = derecha[j++];
         }
     }
-    //Metodo del ejercicio 9
-        public static int[] array(int desde,int hasta,int tamano) {
-        int [] arrayAleatorio = new int[tamano];
-        Random random = new Random();
-        for (int i = 0; i < tamano; i++) {
-            arrayAleatorio[i] = random.nextInt(hasta - desde + 1) + desde;
+    //14
+    public static void mostrarArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
         }
-        return arrayAleatorio;
+        System.out.println();
+    }
+    public static void insercionAscendente(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+    public static void insercionDescendente(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] < key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+    public static void burbujaAscendente(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
     }
 
-    //Metodos ejercicio 10 B
-    public static int leerNumeroEntero(String mensaje) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print(mensaje);
-        return sc.nextInt();
-    }
-    public static int[][] crearMatriz(int filas,int columnas) {
-        return new int[filas][columnas];
-    }
-    public static void llenarMatriz(Scanner sc, int[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                System.out.print("Ingrese el valor para la pisición ["+i+", "+j+"]: ");
-                matriz[i][j] = sc.nextInt();
+    public static void burbujaDescendente(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (arr[j] < arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
             }
         }
     }
-    public static int[][] sumarMatrices(int[][] a,int[][] b) {
-        int filas = a.length;
-        int columnas = a[0].length;
-        int [][] c = new int[filas][columnas];
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                c[i][j] = a[i][j] + b[i][j];
+
+    public static void seleccionAscendente(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            int minIndex = i;
+            for (int j = i+1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
             }
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
         }
-        return c;
     }
-    public static void mostrarMatriz(int[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                System.out.print(matriz[i][j] + " ");
+
+    public static void seleccionDescendente(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            int maxIndex = i;
+            for (int j = i+1; j < n; j++) {
+                if (arr[j] > arr[maxIndex]) {
+                    maxIndex = j;
+                }
             }
-            System.out.println();
-//        }
-//    }
+            int temp = arr[i];
+            arr[i] = arr[maxIndex];
+            arr[maxIndex] = temp;
+        }
+    }
+    //7
+    class MiClase implements Comparable<MiClase> {
+        private int valor;
+
+        // Constructor, getters, setters y otros métodos
+
+        @Override
+        public int compareTo(MiClase otra) {
+            return Integer.compare(this.valor, otra.valor);
+        }
+    }
+}
+
+class Persona implements Comparable<Persona> {
+    private String nombre;
+    private int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    @Override
+    public int compareTo(Persona otraPersona) {
+        return this.nombre.compareTo(otraPersona.getNombre());
+    }
+}
+//8
+class Producto implements Comparable<Producto> {
+    private String nombre;
+    private double precio;
+
+    public Producto(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    @Override
+    public int compareTo(Producto otroProducto) {
+        return Double.compare(this.precio, otroProducto.getPrecio());
+    }
 }
